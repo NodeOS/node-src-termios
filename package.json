@@ -1,0 +1,8 @@
+{
+  "name": "src-termios",
+  "version": "0.0.0",
+  "description": "Node Getty Replacement",
+  "main": "build/Release/binding.node",
+  "author": "Jacob Groundwater <groundwater@gmail.com>",
+  "license": "MIT"
+}
