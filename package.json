@@ -4,8 +4,11 @@
   "description": "Node Getty Replacement",
   "main": "build/Release/binding.node",
   "author": "Jacob Groundwater <groundwater@gmail.com>",
+  "contributors": [
+    "Jesús Leganés Combarro 'piranna' <piranna@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
-     "nan": "^1.9.0"
+     "nan": "^2.2.0"
   }
 }

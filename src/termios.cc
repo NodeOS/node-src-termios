@@ -8,48 +8,59 @@ using namespace v8;
 using namespace node;
 
 NAN_METHOD(SetControllingTTY) {
-  NanScope();
-  int fd = args[0]->Int32Value();
+  Nan::HandleScope scope;
+
+  int fd = info[0]->Int32Value();
   int rt = ioctl (fd, TIOCSCTTY, NULL);
-  NanReturnValue(NanNew<Integer>(rt));
+
+  info.GetReturnValue().Set(Nan::New<Integer>(rt));
 }
 
 NAN_METHOD(VHangUp) {
-  NanScope();
-  int ret = 1; vhangup();
-  NanReturnValue(NanNew<Integer>(ret));
+  Nan::HandleScope scope;
+
+  int ret = 1;
+  vhangup();
+
+  info.GetReturnValue().Set(Nan::New<Integer>(ret));
 }
-  
+
 NAN_METHOD(SetSID) {
-  NanScope();
+  Nan::HandleScope scope;
+
   int sid = setsid();
-  NanReturnValue(NanNew<Integer>(sid));
+
+  info.GetReturnValue().Set(Nan::New<Integer>(sid));
 }
-  
+
 NAN_METHOD(Fork) {
-  NanScope();
+  Nan::HandleScope scope;
+
   int pid = fork();
-  NanReturnValue(NanNew<Integer>(pid));
+
+  info.GetReturnValue().Set(Nan::New<Integer>(pid));
 }
-  
+
 NAN_METHOD(Dup) {
-  NanScope();
-  int fd = args[0]->Int32Value();
+  Nan::HandleScope scope;
+
+  int fd = info[0]->Int32Value();
   int dd = dup(fd);
-  NanReturnValue(NanNew<Integer>(dd));
+
+  info.GetReturnValue().Set(Nan::New<Integer>(dd));
 }
 
 void init(Handle<Object> exports) {
-  exports->Set(NanNew<String>("dup"),
-    NanNew<FunctionTemplate>(Dup)->GetFunction());
-  exports->Set(NanNew<String>("fork"),
-    NanNew<FunctionTemplate>(Fork)->GetFunction());
-  exports->Set(NanNew<String>("setControllingTTY"),
-    NanNew<FunctionTemplate>(SetControllingTTY)->GetFunction());
-  exports->Set(NanNew<String>("vhangup"),
-    NanNew<FunctionTemplate>(VHangUp)->GetFunction());
-  exports->Set(NanNew<String>("setsid"),
-    NanNew<FunctionTemplate>(SetSID)->GetFunction());
+  exports->Set(Nan::New<String>("dup").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(Dup)->GetFunction());
+  exports->Set(Nan::New<String>("fork").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(Fork)->GetFunction());
+  exports->Set(Nan::New<String>("setControllingTTY").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(SetControllingTTY)->GetFunction());
+  exports->Set(Nan::New<String>("vhangup").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(VHangUp)->GetFunction());
+  exports->Set(Nan::New<String>("setsid").ToLocalChecked(),
+    Nan::New<FunctionTemplate>(SetSID)->GetFunction());
 }
 
 NODE_MODULE(binding, init)
