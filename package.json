@@ -1,7 +1,7 @@
 {
-  "name": "src-termios",
+  "name": "@nodeos/termios",
   "version": "0.0.0",
-  "description": "Node Getty Replacement",
+  "description": "NodeOS termios terminal controller replacement",
   "main": "build/Release/binding.node",
   "author": "Jacob Groundwater <groundwater@gmail.com>",
   "contributors": [
