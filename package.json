@@ -9,6 +9,19 @@
   ],
   "license": "MIT",
   "dependencies": {
-     "nan": "^2.6.2"
-  }
+    "nan": "^2.6.2"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "gypfile": true,
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NodeOS/termios.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NodeOS/termios/issues"
+  },
+  "homepage": "https://github.com/NodeOS/termios#readme"
 }
